@@ -48,6 +48,8 @@ void CardAuthouriser::resubscribe() {
 bool CardAuthouriser::checkCard(Card card) {
     logger.log(("Checking card " + String(card)).c_str());
     // Publish the card number and wait for the MQTT response with a timout
+    client.loop();
+    logger.log(std::to_string(client.isConnected()), DEBUG);
     if (client.isConnected()) {
         awaitingMQTTResponse = true;
         client.publish(Config::outTopic, std::to_string(card).c_str());

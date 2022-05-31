@@ -10,10 +10,11 @@ bool RFIDReader::cardIsAvailable() {
 
 // Clear the serial buffer
 void RFIDReader::flush() {
-    while (Serial.available()) {
+    int count;
+    for (count = 1; Serial.available(); count++) {
         Serial.read();
-        logger.log("Flushed byte from serial buffer", DEBUG);
     }
+    logger.log(std::string("Flushed bytes from serial buffer: ").append(std::to_string(count)), DEBUG);
 }
 
 // Returns the RFID card number of what was read.

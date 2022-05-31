@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <EspMQTTClient.h>
 #include <Scheduler.h>
+#include <ESP8266WiFi.h>
 
 #include "Config.h"
 #include "CardAuthoriser.h"
@@ -46,5 +47,6 @@ void loop() {
 // This function has to be implemented, it's a requirement of the EspMQTTClient library.
 void onConnectionEstablished() {
     logger.log("MQTT connection established");
+    Serial.println(WiFi.localIP());
     authouriser.resubscribe();
 }
