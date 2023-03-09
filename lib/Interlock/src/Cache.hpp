@@ -19,7 +19,7 @@ class Cache {
          * @param card The card to check for
          * @return True if the card was found. False if not found or on error.
          */
-        bool checkCache(RFIDCard card);
+        bool checkCard(const RFIDCard card);
 
         /**
          * @brief Updates the cache.
@@ -28,16 +28,14 @@ class Cache {
          * @param authedCards 
          * @return True for success, false for failure.
          */
-        bool updateCache(CachedRFIDCards authedCards);
+        bool update(const CachedRFIDCards &authedCards);
 
         /**
          * @brief Gets the hash of the cached cards, used to check if the cache should be updated.
          * 
-         * @return The hash of authorised cards in the cache. Will have no value if there was an error with the cache.
+         * @return The hash of authorized cards in the cache. Will have no value if there was an error with the cache.
          */
-        std::optional<std::string> getCacheHash() {
-
-        }
+        std::optional<std::string> getHash();
 
     private:
         bool cacheInMemory = false; // If the cache has been loaded into memory yet.

@@ -9,6 +9,7 @@ TEST(TEST, Tests_Running) {
 #define private public
 #include "RFIDReader_test.hpp"
 #include "InterlockState_test.hpp"
+#include "Cache_test.hpp"
 
 #ifdef ARDUINO
 #include <Arduino.h>
