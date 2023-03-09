@@ -76,8 +76,5 @@ TEST(RFIDReader_test, Garbage) {
 
     auto card = RFIDReader::readCard(serial);
     EXPECT_FALSE(card.has_value());
-
-}class CachedCards {
-    
 }
 #endif

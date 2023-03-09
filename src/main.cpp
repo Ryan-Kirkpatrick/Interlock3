@@ -5,13 +5,14 @@
 #include <string>
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
+#include <LittleFS.h>
+#include <Indicator.hpp>
 
 void setup() {
     Serial.begin(9600);
 	while (!Serial) {
 
 	}
-
     WiFi.begin("hi", "bob");
 
 }

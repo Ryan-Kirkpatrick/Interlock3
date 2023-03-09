@@ -7,8 +7,8 @@
 
 struct CachedRFIDCards {
     std::string hashOfCards;
-    RFIDCard cards[Core::CACHE_SIZE] = {0};
-    uint16_t numberOfCards = 0;
+    RFIDCard cards[Core::CACHE_SIZE];
+    uint16_t numberOfCards;
 };
 
 class Cache {
@@ -23,12 +23,12 @@ class Cache {
 
         /**
          * @brief Updates the cache.
-         * Will take no action if the hash in `authedCards` matches `getCacheHash()` (will still return true)
+         * Will take no action if the hash in `newCache` matches `getCacheHash()` (will still return true)
          * 
-         * @param authedCards 
+         * @param newCache 
          * @return True for success, false for failure.
          */
-        bool update(const CachedRFIDCards &authedCards);
+        bool update(const CachedRFIDCards &newCache);
 
         /**
          * @brief Gets the hash of the cached cards, used to check if the cache should be updated.
@@ -38,7 +38,14 @@ class Cache {
         std::optional<std::string> getHash();
 
     private:
-        bool cacheInMemory = false; // If the cache has been loaded into memory yet.
-        CachedRFIDCards cache;
-        const char* CACHE_FILE_NAME = "cache.txt";       
+        CachedRFIDCards cachedCards = {
+            .hashOfCards = "",
+            .cards = {},
+            .numberOfCards = 0
+        };
+        static const char* CACHE_FILE_NAME;
+        
+        bool serializeCache(const CachedRFIDCards &newCache);
+        bool deserializeCache();       
+        bool cacheInMemory = false; // If the cache has been loaded into memory yet. Only to be altered by deserializeCache()
 };

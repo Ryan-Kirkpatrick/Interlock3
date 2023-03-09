@@ -1,2 +1,4 @@
 #pragma once
-typedef unsigned long RFIDCard;
+#include <stdint.h>
+
+typedef uint32_t RFIDCard;

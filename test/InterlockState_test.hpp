@@ -3,10 +3,7 @@
 #include "Indicator.hpp"
 #include "mocks/MockStates.hpp"
 
-#define SUITE_NAME INDICATOR_TEST
-
-TEST(SUITE_NAME, STATE_UPDATES) {
-    Logger logger;
+TEST(InterlockState_test, STATE_UPDATES) {
     Indicator indicator(IndicatorColors::WHITE);
     std::unique_ptr<AbstractState> currentState;
     currentState = std::make_unique<MockStateChangeState>(MockStateChangeState());
@@ -16,8 +13,4 @@ TEST(SUITE_NAME, STATE_UPDATES) {
     ASSERT_EQ(indicator._currentColor, IndicatorColors::RED);
     currentState = currentState->run(indicator);
     ASSERT_EQ(indicator._currentColor, IndicatorColors::RED);
-}
-
-TEST(SUITE_NAME, EXTERNAL_HTTP_STATE_UPDATES) {
-    
 }
