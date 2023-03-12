@@ -26,10 +26,9 @@ class HTTPInterface {
         void httpBump(); // Action to take when visiting http://device.local/bump
         void httpActivate(); // Action to take when visiting http://device.local/activate
         void httpLogs(); // Action to take when visiting http://device.local/logs or http://device.local/log
-        void httpRedirectToRoot(); // Redirect to http://device.local/ 
 
         // Internal state
-        ESP8266WebServer httpServer;
         std::optional<std::unique_ptr<AbstractState>> nextState;
         PortalConnection &portal;
+        ESP8266WebServer httpServer;
 };

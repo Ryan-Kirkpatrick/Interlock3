@@ -12,4 +12,7 @@ namespace Core {
     // Cache
     inline const uint16_t CACHE_SIZE = 100;
 
+    // Device
+    #define DEVICE_NAME "TEST"
+
 }
