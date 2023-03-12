@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <cstddef>
 
 namespace Core {
     // Pin config
@@ -14,5 +15,8 @@ namespace Core {
 
     // Device
     #define DEVICE_NAME "TEST"
+
+    // Logging
+    inline const size_t LOG_SIZE = 16; // Size of the log buffer in bytes
 
 }

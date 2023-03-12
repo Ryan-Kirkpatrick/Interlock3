@@ -24,8 +24,7 @@ std::optional<std::unique_ptr<AbstractState>> HTTPInterface::loop() {
 
 void HTTPInterface::httpRoot() {
     // Don't mess with the ASCII art >:(
-    const char* html =
-    "<html>"
+    PGM_P rootHTML = PSTR("<html>"
         "<head>"
             "<title>" DEVICE_NAME "</title>"
         "</head>"
@@ -64,8 +63,8 @@ void HTTPInterface::httpRoot() {
                                                                                                                              
     "</pre>"
     "</html>"
-    ;
-    httpServer.send(200, "text/html", html);
+    );
+    httpServer.send(200, "text/html", rootHTML);
 }
 
 void HTTPInterface::httpReboot() {

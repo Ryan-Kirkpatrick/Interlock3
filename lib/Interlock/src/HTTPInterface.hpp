@@ -5,8 +5,6 @@
 #include "Core.hpp"
 #include "InterlockState.hpp"
 #include "PortalConnection.hpp"
-
-
 class HTTPInterface {
     public:
         HTTPInterface(PortalConnection &portal);
@@ -31,4 +29,5 @@ class HTTPInterface {
         std::optional<std::unique_ptr<AbstractState>> nextState;
         PortalConnection &portal;
         ESP8266WebServer httpServer;
+        
 };

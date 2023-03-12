@@ -14,7 +14,7 @@ TEST(RFIDReader_test, Well_Formed_Card) {
 
     auto card = RFIDReader::readCard(serial);
     ASSERT_TRUE(card.has_value());
-    EXPECT_EQ(card.value(), (unsigned long) 2006632);
+    EXPECT_EQ(card.value(), (RFIDCard) 2006632);
 }
 
 TEST(RFIDReader_test, Well_Formed_Card_Missing_Stop_Byte) { // Desired behaviour for missing stop byte is a failed read.
@@ -38,7 +38,7 @@ TEST(RFIDReader_test, Well_Formed_Card_Between_Garbage) {
 
     auto card = RFIDReader::readCard(serial);
     ASSERT_TRUE(card.has_value());
-    EXPECT_EQ(card.value(), (unsigned long) 2006632);
+    EXPECT_EQ(card.value(), (RFIDCard) 2006632);
 
 }
 

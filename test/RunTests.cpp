@@ -3,6 +3,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <LittleFS.h>
+#include <ESP8266WebServer.h>
 #include "Core.hpp"
 
 #define private public
@@ -10,6 +11,7 @@
 #include "RFIDReader_test.hpp"
 #include "InterlockState_test.hpp"
 #include "Cache_test.hpp"
+#include "Logger_test.hpp"
 
 void setup() {
 	Serial.begin(9600);

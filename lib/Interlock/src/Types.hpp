@@ -1,4 +1,4 @@
 #pragma once
 #include <stdint.h>
 
-typedef uint16_t RFIDCard;
+typedef uint32_t RFIDCard;
