@@ -11,10 +11,10 @@
 
 class PortalConnection {
     public:
-        static std::optional<std::string> obtainHashOfAuthedCards(WiFiClient &wifiClient);    
-        static std::optional<CachedRFIDCards> getAllAuthedCards(WiFiClient &wifiClient);
-        static std::optional<bool> checkCardAuth(WiFiClient &wifiClient, RFIDCard card);
-    private:
+        virtual std::optional<std::string> obtainHashOfAuthedCards(WiFiClient &wifiClient);    
+        virtual std::optional<CachedRFIDCards> getAllAuthedCards(WiFiClient &wifiClient);
+        virtual std::optional<bool> checkCardAuth(WiFiClient &wifiClient, RFIDCard card);
+    protected:
         static std::optional<std::string> decodeHashOfAuthedCards(String payload);
         static std::optional<CachedRFIDCards> decodeAllAuthedCards(String payload);
         static std::optional<bool> decodeCardAuth(String payload);
