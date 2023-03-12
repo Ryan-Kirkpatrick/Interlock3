@@ -6,7 +6,7 @@ Logger::Logger(bool useSerial) : useSerial{useSerial} {};
 
 void Logger::log(std::string logText) {
     logText.append("\n");
-    if (Serial && useSerial) {
+    if (useSerial && Serial) {
         Serial.print(logText.c_str());
     }
     buffer.insert(logText.c_str());
@@ -17,7 +17,7 @@ const char* Logger::getLogs() {
 }
 
 template<size_t size>
-Logger::CircularBuffer<size>::CircularBuffer() : startOfBuffer{CyclicIndex<size>(0)}, endOfBuffer{CyclicIndex<size>(1)} {}
+Logger::CircularBuffer<size>::CircularBuffer() : startOfBuffer{CyclicIndex<size>(0)}, endOfBuffer{CyclicIndex<size>(0)} {}
 
 template<size_t size>
 void Logger::CircularBuffer<size>::insert(const char *str) {

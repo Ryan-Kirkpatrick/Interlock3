@@ -17,6 +17,6 @@ namespace Core {
     #define DEVICE_NAME "TEST"
 
     // Logging
-    inline const size_t LOG_SIZE = 16; // Size of the log buffer in bytes
+    inline const size_t LOG_SIZE = 512; // Size of the log buffer in bytes
 
 }

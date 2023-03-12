@@ -1,3 +1,5 @@
+#define INTERLOCK_UNIT_TEST
+
 #include <Arduino.h>
 #include <gtest/gtest.h>
 #include <ESP8266WiFi.h>

@@ -81,6 +81,12 @@ void HTTPInterface::httpActivate() {
 
 void HTTPInterface::httpLogs() {
     // TODO
+    Logger logger(true);
+    logger.log("I'm a little teapot");
+    logger.log("Short and stout");
+    logger.log("Here is my handle");
+    logger.log("Here is my spout");
+    httpServer.send(200, "text/plain", logger.getLogs());
 }
 
 

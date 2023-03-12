@@ -88,6 +88,6 @@ class Logger {
         };
 
         CircularBuffer<Core::LOG_SIZE> buffer;
-        const bool useSerial = true;
+        const bool useSerial;
 
 };

@@ -5,6 +5,9 @@
 #include "Core.hpp"
 #include "InterlockState.hpp"
 #include "PortalConnection.hpp"
+#include "Logger.hpp"
+
+
 class HTTPInterface {
     public:
         HTTPInterface(PortalConnection &portal);

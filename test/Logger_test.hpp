@@ -16,7 +16,17 @@ std::string generateRandomString (unsigned int length) {
     return result;
 }
 
-TEST(LoggerTest, Basic_No_Overwrite) {
+TEST(LoggerTest, Basic_Short) {
+    std::string str = "ABCD";
+
+    Logger logger(false);
+    logger.log(str);
+    std::string testStr = logger.getLogs();
+    EXPECT_EQ((str + "\n"), testStr);
+}
+
+
+TEST(LoggerTest, Basic_Just_Fits) {
     auto str = generateRandomString(Core::LOG_SIZE - 2U);
 
     Logger logger(false);
