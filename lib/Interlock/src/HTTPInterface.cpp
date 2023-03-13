@@ -2,7 +2,10 @@
 #include "Core.hpp"
 
 
-HTTPInterface::HTTPInterface(PortalConnection &portal) : portal{portal}, httpServer{ESP8266WebServer(80)} {
+HTTPInterface::HTTPInterface(PortalConnection &portal, Logger &logger) : 
+portal{portal}, 
+httpServer{ESP8266WebServer(80)},
+logger{logger} {
     httpServer.on("/", [this](){httpRoot();});
     httpServer.on("/bump", [this](){httpBump();});
     httpServer.on("/activate", [this](){httpActivate();});
@@ -80,12 +83,6 @@ void HTTPInterface::httpActivate() {
 }
 
 void HTTPInterface::httpLogs() {
-    // TODO
-    Logger logger(true);
-    logger.log("I'm a little teapot");
-    logger.log("Short and stout");
-    logger.log("Here is my handle");
-    logger.log("Here is my spout");
     httpServer.send(200, "text/plain", logger.getLogs());
 }
 

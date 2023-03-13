@@ -10,7 +10,7 @@
 
 class HTTPInterface {
     public:
-        HTTPInterface(PortalConnection &portal);
+        HTTPInterface(PortalConnection &portal, Logger &logger);
 
         /**
          * @brief Must be called frequently to handle HTTP. 
@@ -32,5 +32,8 @@ class HTTPInterface {
         std::optional<std::unique_ptr<AbstractState>> nextState;
         PortalConnection &portal;
         ESP8266WebServer httpServer;
+
+        // Logs
+        Logger &logger;
         
 };

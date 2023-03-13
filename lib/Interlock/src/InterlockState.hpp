@@ -7,7 +7,8 @@
 
 class AbstractState {
     public:
-        AbstractState() {}
+        AbstractState() = delete;
+        AbstractState(Logger &logger) : logger{logger} {}
         /**
          * @brief Run the actions of this state and updates the indicator, eventually transitioning to the next one.
          * 
@@ -23,6 +24,8 @@ class AbstractState {
         virtual ~AbstractState() {};
 
     protected:
+        Logger &logger;
+ 
         /**
          * @brief Each state is associated with an indicator color.
          * Implementations of this function simply return the associated color. 

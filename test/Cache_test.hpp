@@ -7,6 +7,8 @@
 
 TEST(Cache_Test, Update_Cache_Normal_Operation) {
 
+    Logger logger;
+
     // Delete the file
     ASSERT_TRUE(LittleFS.begin());
     LittleFS.remove(Cache::CACHE_FILE_NAME);
@@ -35,7 +37,7 @@ TEST(Cache_Test, Update_Cache_Normal_Operation) {
         acc += 10;
     }
 
-    Cache cache;
+    Cache cache(logger);
     // Right now there is no cache, we should be unable to obtain results from the cache
     EXPECT_FALSE(cache.checkCard((RFIDCard) 0));
     EXPECT_FALSE(cache.checkCard((RFIDCard) 10));
@@ -77,7 +79,7 @@ TEST(Cache_Test, Update_Cache_Normal_Operation) {
 
     // Destruct the cache, and make a new one, ensuring it can read from flash correctly
     cache.~Cache();
-    Cache cache2;
+    Cache cache2(logger);
     EXPECT_FALSE(cache2.getHash().has_value());
     
     // Check that everything is how it was

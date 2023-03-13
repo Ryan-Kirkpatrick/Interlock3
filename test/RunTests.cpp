@@ -24,5 +24,6 @@ void loop() {
 	if (RUN_ALL_TESTS()) {
         // Left intentionally empty, PIO does not require the result and it cannot be cast to void.
     }
+	Serial.println("All tests complete");
 	delay(1000);
 }

@@ -2,6 +2,8 @@
 #include <ESP8266HTTPClient.h>
 #include <ArduinoJson.h>
 
+PortalConnection::PortalConnection(Logger &logger) : logger{logger} {};
+
 std::optional<std::string> PortalConnection::obtainHashOfAuthedCards(WiFiClient &wifiClient) {
     std::optional<std::string> result;
     

@@ -5,6 +5,8 @@
 
 const char* Cache::CACHE_FILE_NAME = "cache.txt";
 
+Cache::Cache(Logger &logger) : logger{logger} {}
+
 bool Cache::checkCard(const RFIDCard card) {
     // Load cache, if required
     if (!cacheInMemory) {

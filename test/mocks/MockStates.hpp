@@ -11,7 +11,7 @@ class MockStateNoStateChange : public AbstractState {
     }
 
     std::unique_ptr<AbstractState> doStateActions() override {
-        return  std::make_unique<MockStateNoStateChange>(MockStateNoStateChange());
+        return  std::make_unique<MockStateNoStateChange>(MockStateNoStateChange(logger));
     }
 };
 
@@ -23,6 +23,6 @@ class MockStateChangeState : public AbstractState {
     }
 
     std::unique_ptr<AbstractState> doStateActions() override {
-        return std::make_unique<MockStateNoStateChange>(MockStateNoStateChange());
+        return std::make_unique<MockStateNoStateChange>(MockStateNoStateChange(logger));
     }
 };

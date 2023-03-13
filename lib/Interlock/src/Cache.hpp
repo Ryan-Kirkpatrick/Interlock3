@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Types.hpp"
-#include  "Core.hpp"
+#include "Core.hpp"
+#include "Logger.hpp"
 #include <string>
 #include <optional>
 
@@ -13,6 +14,10 @@ struct CachedRFIDCards {
 
 class Cache {
     public:
+
+        Cache(Logger &logger);
+        Cache() = delete;
+
         /**
          * @brief Checks the cache for and RFID card
          * 
@@ -48,4 +53,7 @@ class Cache {
         bool serializeCache(const CachedRFIDCards &newCache);
         bool deserializeCache();       
         bool cacheInMemory = false; // If the cache has been loaded into memory yet. Only to be altered by deserializeCache()
+
+        Logger &logger;
+
 };
