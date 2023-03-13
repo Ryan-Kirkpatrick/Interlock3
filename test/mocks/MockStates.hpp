@@ -1,6 +1,6 @@
 #pragma once
 
-#include "InterlockState.hpp"
+#include "AbstractState.hpp"
 
 
 class MockStateNoStateChange : public AbstractState {
@@ -11,7 +11,7 @@ class MockStateNoStateChange : public AbstractState {
     }
 
     std::unique_ptr<AbstractState> doStateActions() override {
-        return  std::make_unique<MockStateNoStateChange>(MockStateNoStateChange(logger));
+        return  std::make_unique<MockStateNoStateChange>(MockStateNoStateChange(cardChecker, logger));
     }
 };
 
@@ -23,6 +23,6 @@ class MockStateChangeState : public AbstractState {
     }
 
     std::unique_ptr<AbstractState> doStateActions() override {
-        return std::make_unique<MockStateNoStateChange>(MockStateNoStateChange(logger));
+        return std::make_unique<MockStateNoStateChange>(MockStateNoStateChange(cardChecker, logger));
     }
 };

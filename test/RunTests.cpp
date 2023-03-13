@@ -11,6 +11,7 @@
 #define private public
 #define protected public
 #include "RFIDReader_test.hpp"
+#include "PortalConnection_test.hpp"
 #include "InterlockState_test.hpp"
 #include "Cache_test.hpp"
 #include "Logger_test.hpp"

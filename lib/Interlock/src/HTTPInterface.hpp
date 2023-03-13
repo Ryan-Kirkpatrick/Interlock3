@@ -3,7 +3,7 @@
 #include <ESP8266WebServer.h>
 
 #include "Core.hpp"
-#include "InterlockState.hpp"
+#include "AbstractState.hpp"
 #include "PortalConnection.hpp"
 #include "Logger.hpp"
 

@@ -4,11 +4,15 @@
 #include <optional>
 #include "Indicator.hpp"
 #include "Logger.hpp"
+#include "RFIDCardChecker.hpp"
 
 class AbstractState {
     public:
         AbstractState() = delete;
-        AbstractState(Logger &logger) : logger{logger} {}
+        AbstractState(RFIDCardChecker cardChecker, Logger &logger) : 
+            cardChecker{cardChecker},
+            logger{logger} {}
+
         /**
          * @brief Run the actions of this state and updates the indicator, eventually transitioning to the next one.
          * 
@@ -24,6 +28,7 @@ class AbstractState {
         virtual ~AbstractState() {};
 
     protected:
+        RFIDCardChecker cardChecker;
         Logger &logger;
  
         /**
