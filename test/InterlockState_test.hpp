@@ -10,9 +10,9 @@ TEST(InterlockState_test, STATE_UPDATES) {
     std::unique_ptr<AbstractState> currentState;
     currentState = std::make_unique<MockStateChangeState>(MockStateChangeState(cardChecker, logger));
     currentState = currentState->run(indicator);
-    ASSERT_EQ(indicator._currentColor, IndicatorColors::GREEN);
+    ASSERT_EQ(indicator.currentColor, IndicatorColors::GREEN);
     currentState = currentState->run(indicator);
-    ASSERT_EQ(indicator._currentColor, IndicatorColors::RED);
+    ASSERT_EQ(indicator.currentColor, IndicatorColors::RED);
     currentState = currentState->run(indicator);
-    ASSERT_EQ(indicator._currentColor, IndicatorColors::RED);
+    ASSERT_EQ(indicator.currentColor, IndicatorColors::RED);
 }

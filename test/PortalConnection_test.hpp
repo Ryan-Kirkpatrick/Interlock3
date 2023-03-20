@@ -96,7 +96,7 @@ TEST(Portal_Connection_Test, All_Card_Auth_Good) {
     expectedResult.cards[1] = 3552439;
 
     auto result = PortalConnection::decodeAllAuthedCards(payload);
-    ASSERT_TRUE(result.has_value());
+    ASSERT_TRUE(result.has_value());3
     ASSERT_EQ(expectedResult.hashOfCards, result.value().hashOfCards);
     ASSERT_EQ(expectedResult.cards[0], result.value().cards[0]);
     ASSERT_EQ(expectedResult.cards[1], result.value().cards[1]);

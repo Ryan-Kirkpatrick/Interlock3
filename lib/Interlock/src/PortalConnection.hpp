@@ -9,17 +9,23 @@
 #include "Cache.hpp"
 #include "Logger.hpp"
 
+class IPortalConnection {
+    public:
+        virtual std::optional<std::string> obtainHashOfAuthedCards(WiFiClient &wifiClient) = 0;
+        virtual std::optional<CachedRFIDCards> getAllAuthedCards(WiFiClient &wifiClient) = 0;
+        virtual std::optional<bool> checkCardAuth(WiFiClient &wifiClient, RFIDCard card) = 0;
+};
 
-class PortalConnection {
+class PortalConnection : public IPortalConnection {
     public:
         PortalConnection(Logger &logger);
-        static std::optional<std::string> obtainHashOfAuthedCards(WiFiClient &wifiClient);    
-        static std::optional<CachedRFIDCards> getAllAuthedCards(WiFiClient &wifiClient);
-        static std::optional<bool> checkCardAuth(WiFiClient &wifiClient, RFIDCard card);
+        std::optional<std::string> obtainHashOfAuthedCards(WiFiClient &wifiClient) override;
+        std::optional<CachedRFIDCards> getAllAuthedCards(WiFiClient &wifiClient) override;
+        std::optional<bool> checkCardAuth(WiFiClient &wifiClient, RFIDCard card) override;
     protected:
-        static std::optional<std::string> decodeHashOfAuthedCards(String payload);
-        static std::optional<CachedRFIDCards> decodeAllAuthedCards(String payload);
-        static std::optional<bool> decodeCardAuth(String payload);
-        static std::optional<String> httpGET(WiFiClient &wifiCLient, const char *url);
+        std::optional<std::string> decodeHashOfAuthedCards(String payload);
+        std::optional<CachedRFIDCards> decodeAllAuthedCards(String payload);
+        std::optional<bool> decodeCardAuth(String payload);
+        std::optional<String> httpGET(WiFiClient &wifiCLient, const char *url);
         Logger &logger;
 };

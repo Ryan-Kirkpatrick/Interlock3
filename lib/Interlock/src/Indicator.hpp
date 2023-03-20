@@ -24,7 +24,7 @@ class Indicator {
          */
         void update(IndicatorColorRGBW color);
     private:
-        IndicatorColorRGBW _currentColor;
+        IndicatorColorRGBW currentColor;
         #ifdef ARDUINO
         #ifdef GRBW
         NeoPixelBus<NeoGrbwFeature, NeoEsp8266BitBang800KbpsMethod> led = NeoPixelBus<NeoGrbwFeature, NeoEsp8266BitBang800KbpsMethod>(Core::NUMBER_OF_INDICATOR_LEDS, Core::INDICATOR_LED_PIN);
